@@ -10,7 +10,7 @@ public class PizzaMaker {
     }
 
     void start() {
-        System.out.println("Witaj w kreatorze pizzy!");
+        System.out.println("Welcome in Pizza Maker App!");
 
         addPizza();
     }
@@ -19,15 +19,31 @@ public class PizzaMaker {
         try(Scanner in = new Scanner(System.in)) {
             System.out.println("Give me a pizza name");
             String pizzaName = in.nextLine();
+            if (pizzaName.isBlank()) {
+                pizzaName = "Chief pizza";
+            }
 
-            System.out.println("Which dough do you want? (ITALIAN, POLISH, PLUMB)");
-            Dough dough = Dough.valueOf(in.nextLine());
+            System.out.println("Which dough do you want? (CLASSIC, THICK_CRUST)");
+            String doughValue = in.nextLine();
+            if (doughValue.isBlank()) {
+                doughValue = "CLASSIC";
+            }
+
+            Dough dough = Dough.valueOf(doughValue);
 
             System.out.println("Which sauce do you want? (TOMATO, CHEESE, TOMATO-CHEESE)");
-            Sauce sauce = Sauce.valueOf(in.nextLine());
+            String sauceValue = in.nextLine();
+            if (sauceValue.isBlank()) {
+                sauceValue = "TOMATO_CHEESE";
+            }
+            Sauce sauce = Sauce.valueOf(sauceValue);
 
             System.out.println("Give me the size of pizza (SMALL, MEDIUM, LARGE, EXTRA_LARGE)");
-            Size size = Size.valueOf(in.nextLine());
+            String sizeValue = in.nextLine();
+            if (sizeValue.isBlank()) {
+                sizeValue = "MEDIUM";
+            }
+            Size size = Size.valueOf(sizeValue);
 
             List<Topping> toppings = new ArrayList<>();
             while (true) {
