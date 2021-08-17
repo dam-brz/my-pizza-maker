@@ -23,7 +23,7 @@ class PizzaBuilder {
     }
 
     public void withDough(String doughValue) {
-        this.dough = Dough.valueOf(doughValue.isBlank() ? "ITALIAN" : doughValue);
+        this.dough = Dough.valueOf(doughValue.isBlank() ? "CLASSIC" : doughValue);
     }
 
     public void withTopping(Topping topping) {

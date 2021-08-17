@@ -1,7 +1,5 @@
 package com.dambrz.pizza.maker;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PizzaMaker {
@@ -12,79 +10,42 @@ public class PizzaMaker {
     void start() {
         System.out.println("Welcome in Pizza Maker App!");
 
-        addPizza();
+        createPizza();
     }
 
-    private void addPizza() {
+    private void createPizza() {
         try(Scanner in = new Scanner(System.in)) {
+            PizzaBuilder pizzaBuilder = new PizzaBuilder();
+
             System.out.println("Give me a pizza name");
-            String pizzaName = getPizzaName(in, "Chief pizza");
+            pizzaBuilder.withName(in.nextLine());
 
             System.out.println("Which dough do you want? (CLASSIC, THICK_CRUST)");
-            String doughValue = getDough(in, "CLASSIC");
-
-            Dough dough = Dough.valueOf(doughValue);
+            pizzaBuilder.withDough(in.nextLine());
 
             System.out.println("Which sauce do you want? (TOMATO, CHEESE, TOMATO-CHEESE)");
-            Sauce sauce = getSauce(in);
+            pizzaBuilder.withSauce(in.nextLine());
 
             System.out.println("Give me the size of pizza (SMALL, MEDIUM, LARGE, EXTRA_LARGE)");
-            Size size = getSize(in);
+            pizzaBuilder.withSize(in.nextLine());
 
-            List<Topping> toppings = getToppings(in);
+            getToppings(in, pizzaBuilder);
 
-            Pizza pizza = new Pizza(pizzaName, dough, sauce, size, toppings);
+            Pizza pizza = pizzaBuilder.build();
             System.out.println(pizza);
         }
     }
 
-    private List<Topping> getToppings(Scanner in) {
-        List<Topping> toppings = new ArrayList<>();
+    private void getToppings(Scanner in, PizzaBuilder pizzaBuilder) {
         while (true) {
             System.out.println("Which topping do you want?");
-            toppings.add(Topping.valueOf(in.nextLine()));
+            pizzaBuilder.withTopping(Topping.valueOf(in.nextLine()));
 
             System.out.println("More toppings? (YES/NO)");
-            String nextTopping = in.nextLine();
 
-            if (nextTopping.equals("NO")) {
+            if (in.nextLine().equals("NO")) {
                 break;
             }
         }
-        return toppings;
-    }
-
-    private Size getSize(Scanner in) {
-        String sizeValue = in.nextLine();
-        if (sizeValue.isBlank()) {
-            sizeValue = "MEDIUM";
-        }
-        Size size = Size.valueOf(sizeValue);
-        return size;
-    }
-
-    private Sauce getSauce(Scanner in) {
-        String sauceValue = in.nextLine();
-        if (sauceValue.isBlank()) {
-            sauceValue = "TOMATO_CHEESE";
-        }
-        Sauce sauce = Sauce.valueOf(sauceValue);
-        return sauce;
-    }
-
-    private String getDough(Scanner in, String classic) {
-        String doughValue = in.nextLine();
-        if (doughValue.isBlank()) {
-            doughValue = classic;
-        }
-        return doughValue;
-    }
-
-    private String getPizzaName(Scanner in, String s) {
-        String pizzaName = in.nextLine();
-        if (pizzaName.isBlank()) {
-            pizzaName = s;
-        }
-        return pizzaName;
     }
 }
