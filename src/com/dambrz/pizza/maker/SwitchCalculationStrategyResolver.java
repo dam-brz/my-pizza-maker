@@ -1,6 +1,6 @@
 package com.dambrz.pizza.maker;
 
-class CalculationStrategyResolver {
+class SwitchCalculationStrategyResolver {
 
     CalculationStrategy chooseStrategy(Size size) {
         switch (size) {
