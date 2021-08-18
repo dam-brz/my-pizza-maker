@@ -14,10 +14,12 @@ public class PizzaMaker {
     void start() {
         System.out.println("Welcome in Pizza Maker App!");
 
-        createPizza();
+        var pizza = createPizza();
+
+        calculatePrice(pizza);
     }
 
-    private void createPizza() {
+    private Pizza createPizza() {
         try(Scanner in = new Scanner(System.in)) {
             PizzaBuilder pizzaBuilder = new PizzaBuilder();
 
@@ -37,6 +39,8 @@ public class PizzaMaker {
 
             Pizza pizza = pizzaBuilder.build();
             System.out.println(pizza);
+
+            return pizza;
         }
     }
 
