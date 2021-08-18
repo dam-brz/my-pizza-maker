@@ -71,63 +71,86 @@ public class PizzaMaker {
 
         switch (size) {
             case SMALL:
-                if (pizza.getToppings().size() <= 2) {
-                    price = 22;
-                } else {
-                    price = 26;
-                }
+                price = calculatePriceForSmallPizza(pizza);
                 break;
             case MEDIUM:
-                if (pizza.getToppings().size() <= 3) {
-                    if (getMeatToppingsPercentage(pizza.getToppings()) < 50) {
-                        price = 27;
-                    } else {
-                        price = 29;
-                    }
-                } else {
-                    if (getMeatToppingsPercentage(pizza.getToppings()) < 40) {
-                        price = 29;
-                    } else {
-                        price = 31;
-                    }
-                }
+                price = calculatePriceForMediumPizza(pizza);
                 break;
             case LARGE:
-                if (pizza.getToppings().size() <= 3) {
-                    if (getMeatToppingsPercentage(pizza.getToppings()) < 40) {
-                        price = 35;
-                    } else {
-                        price = 40;
-                    }
-                } else {
-                    if (pizza.getToppings().contains(PINEAPPLE)) {
-                        price = 38;
-                    } else {
-                        price = 12;
-                    }
-                }
-
-                if (pizza.getDough() == THICK_CRUST) {
-                    price += 3;
-                }
-
+                price = calculatePriceForLargePizza(pizza);
                 break;
             case EXTRA_LARGE:
-                if (pizza.getToppings().size() <= 2) {
-                    price = 45;
-                } else {
-                    price = 51;
-                }
-
-                if (pizza.getDough() == THICK_CRUST) {
-                    price +=10;
-                }
+                price = calculatePriceForExtraLargePizza(pizza);
                 break;
             default:
                 throw new IllegalStateException("Unknown size=" + size);
         }
 
         System.out.println("Price: " + price);
+        return price;
+    }
+
+    private int calculatePriceForSmallPizza(Pizza pizza) {
+        int price;
+        if (pizza.getToppings().size() <= 2) {
+            price = 18;
+        } else {
+            price = 22;
+        }
+        return price;
+    }
+
+    private int calculatePriceForMediumPizza(Pizza pizza) {
+        int price;
+        if (pizza.getToppings().size() <= 3) {
+            if (getMeatToppingsPercentage(pizza.getToppings()) < 50) {
+                price = 25;
+            } else {
+                price = 27;
+            }
+        } else {
+            if (getMeatToppingsPercentage(pizza.getToppings()) < 40) {
+                price = 27;
+            } else {
+                price = 29;
+            }
+        }
+        return price;
+    }
+
+    private int calculatePriceForLargePizza(Pizza pizza) {
+        int price;
+        if (pizza.getToppings().size() <= 3) {
+            if (getMeatToppingsPercentage(pizza.getToppings()) < 40) {
+                price = 30;
+            } else {
+                price = 35;
+            }
+        } else {
+            if (pizza.getToppings().contains(PINEAPPLE)) {
+                price = 37;
+            } else {
+                price = 40;
+            }
+        }
+
+        if (pizza.getDough() == THICK_CRUST) {
+            price += 5;
+        }
+        return price;
+    }
+
+    private int calculatePriceForExtraLargePizza(Pizza pizza) {
+        int price;
+        if (pizza.getToppings().size() <= 2) {
+            price = 40;
+        } else {
+            price = 50;
+        }
+
+        if (pizza.getDough() == THICK_CRUST) {
+            price +=10;
+        }
         return price;
     }
 }
