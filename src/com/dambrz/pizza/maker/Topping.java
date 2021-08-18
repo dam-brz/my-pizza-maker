@@ -7,7 +7,7 @@ enum Topping {
     SALAMI(true),
     MUSHROOMS(false),
     TOMATO(false),
-    ANANAS(false),
+    PINEAPPLE(false),
     CORN(false),
     CHEDDAR(false),
     GOUDA(false),
