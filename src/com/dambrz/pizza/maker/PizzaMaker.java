@@ -1,5 +1,6 @@
 package com.dambrz.pizza.maker;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class PizzaMaker {
@@ -47,5 +48,13 @@ public class PizzaMaker {
                 break;
             }
         }
+    }
+
+    private static double getMeatToppingsPercentage(List<Topping> toppings) {
+        long count = toppings.stream()
+                .filter(Topping::isMeat)
+                .count();
+
+        return ((double) count/(double) toppings.size()) * 100;
     }
 }
