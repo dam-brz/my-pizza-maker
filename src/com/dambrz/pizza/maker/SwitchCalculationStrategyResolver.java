@@ -1,8 +1,9 @@
 package com.dambrz.pizza.maker;
 
-class SwitchCalculationStrategyResolver {
+class SwitchCalculationStrategyResolver  implements CalculationStrategyResolver {
 
-    CalculationStrategy chooseStrategy(Size size) {
+    @Override
+    public CalculationStrategy chooseStrategy(Size size) {
         switch (size) {
             case SMALL:
                 return new SmallPizzaCalculationStrategy();

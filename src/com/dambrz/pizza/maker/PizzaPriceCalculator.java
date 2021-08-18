@@ -3,15 +3,15 @@ package com.dambrz.pizza.maker;
 class PizzaPriceCalculator {
 
     private final Pizza pizza;
-    private final SwitchCalculationStrategyResolver switchcalculationStrategyResolver;
+    private final CalculationStrategyResolver calculationStrategyResolver;
 
-    public PizzaPriceCalculator(Pizza pizza, SwitchCalculationStrategyResolver switchcalculationStrategyResolver) {
+    public PizzaPriceCalculator(Pizza pizza, CalculationStrategyResolver calculationStrategyResolver) {
         this.pizza = pizza;
-        this.switchcalculationStrategyResolver = switchcalculationStrategyResolver;
+        this.calculationStrategyResolver = calculationStrategyResolver;
     }
 
     public int calculatePizzaPrice() {
-        CalculationStrategy calculationStrategy = switchcalculationStrategyResolver.chooseStrategy(pizza.getSize());
+        CalculationStrategy calculationStrategy = calculationStrategyResolver.chooseStrategy(pizza.getSize());
 
         int price = calculationStrategy.calculate(pizza);
         System.out.println("Price: " + price);
