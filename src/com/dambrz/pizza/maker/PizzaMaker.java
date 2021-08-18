@@ -12,7 +12,7 @@ public class PizzaMaker {
 
         var pizza = createPizza();
 
-        PizzaPriceCalculator pizzaPriceCalculator = new PizzaPriceCalculator(pizza);
+        PizzaPriceCalculator pizzaPriceCalculator = new PizzaPriceCalculator(pizza, new CalculationStrategyResolver());
         pizzaPriceCalculator.calculatePizzaPrice();
     }
 
