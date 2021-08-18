@@ -1,10 +1,6 @@
 package com.dambrz.pizza.maker;
 
-import java.util.List;
 import java.util.Scanner;
-
-import static com.dambrz.pizza.maker.Dough.THICK_CRUST;
-import static com.dambrz.pizza.maker.Topping.PINEAPPLE;
 
 public class PizzaMaker {
     public static void main(String[] args) {
@@ -16,7 +12,8 @@ public class PizzaMaker {
 
         var pizza = createPizza();
 
-        calculatePrice(pizza);
+        PizzaPriceCalculator pizzaPriceCalculator = new PizzaPriceCalculator(pizza);
+        pizzaPriceCalculator.calculatePizzaPrice();
     }
 
     private Pizza createPizza() {
@@ -57,77 +54,5 @@ public class PizzaMaker {
         }
     }
 
-    private static double getMeatToppingsPercentage(List<Topping> toppings) {
-        long count = toppings.stream()
-                .filter(Topping::isMeat)
-                .count();
 
-        return ((double) count/(double) toppings.size()) * 100;
-    }
-
-    private int calculatePrice(Pizza pizza) {
-        Size size = pizza.getSize();
-        int price = 0;
-
-        switch (size) {
-            case SMALL:
-                if (pizza.getToppings().size() <= 2) {
-                    price = 22;
-                } else {
-                    price = 26;
-                }
-                break;
-            case MEDIUM:
-                if (pizza.getToppings().size() <= 3) {
-                    if (getMeatToppingsPercentage(pizza.getToppings()) < 50) {
-                        price = 27;
-                    } else {
-                        price = 29;
-                    }
-                } else {
-                    if (getMeatToppingsPercentage(pizza.getToppings()) < 40) {
-                        price = 29;
-                    } else {
-                        price = 31;
-                    }
-                }
-                break;
-            case LARGE:
-                if (pizza.getToppings().size() <= 3) {
-                    if (getMeatToppingsPercentage(pizza.getToppings()) < 40) {
-                        price = 35;
-                    } else {
-                        price = 40;
-                    }
-                } else {
-                    if (pizza.getToppings().contains(PINEAPPLE)) {
-                        price = 38;
-                    } else {
-                        price = 12;
-                    }
-                }
-
-                if (pizza.getDough() == THICK_CRUST) {
-                    price += 3;
-                }
-
-                break;
-            case EXTRA_LARGE:
-                if (pizza.getToppings().size() <= 2) {
-                    price = 45;
-                } else {
-                    price = 51;
-                }
-
-                if (pizza.getDough() == THICK_CRUST) {
-                    price +=10;
-                }
-                break;
-            default:
-                throw new IllegalStateException("Unknown size=" + size);
-        }
-
-        System.out.println("Price: " + price);
-        return price;
-    }
 }
