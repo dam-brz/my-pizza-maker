@@ -1,6 +1,8 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.calculation;
 
-import static com.dambrz.pizza.maker.PizzaPriceCalculatorUtils.getMeatToppingsPercentage;
+import com.dambrz.pizza.maker.model.Pizza;
+
+import static com.dambrz.pizza.maker.calculation.PizzaPriceCalculatorUtils.getMeatToppingsPercentage;
 
 class MediumPizzaCalculationStrategy implements CalculationStrategy{
     @Override

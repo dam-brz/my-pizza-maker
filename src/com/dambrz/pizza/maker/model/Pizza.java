@@ -1,9 +1,8 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-class Pizza {
+public class Pizza {
     private final String name;
     private final Dough dough;
     private final Sauce sauce;

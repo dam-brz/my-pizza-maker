@@ -1,6 +1,6 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.model;
 
-enum Topping {
+public enum Topping {
 
     HAM(true),
     BACON(true),

@@ -1,6 +1,8 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.calculation;
 
-class PizzaPriceCalculator {
+import com.dambrz.pizza.maker.model.Pizza;
+
+public class PizzaPriceCalculator {
 
     private final Pizza pizza;
     private final CalculationStrategyResolver calculationStrategyResolver;

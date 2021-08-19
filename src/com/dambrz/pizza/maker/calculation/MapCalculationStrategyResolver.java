@@ -1,9 +1,11 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.calculation;
+
+import com.dambrz.pizza.maker.model.Size;
 
 import java.util.Map;
 import java.util.Optional;
 
-import static com.dambrz.pizza.maker.Size.*;
+import static com.dambrz.pizza.maker.model.Size.*;
 
 public class MapCalculationStrategyResolver implements CalculationStrategyResolver {
 

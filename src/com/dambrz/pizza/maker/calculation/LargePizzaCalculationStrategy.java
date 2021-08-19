@@ -1,8 +1,10 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.calculation;
 
-import static com.dambrz.pizza.maker.PizzaPriceCalculatorUtils.getMeatToppingsPercentage;
-import static com.dambrz.pizza.maker.Dough.THICK_CRUST;
-import static com.dambrz.pizza.maker.Topping.PINEAPPLE;
+import com.dambrz.pizza.maker.model.Pizza;
+
+import static com.dambrz.pizza.maker.calculation.PizzaPriceCalculatorUtils.getMeatToppingsPercentage;
+import static com.dambrz.pizza.maker.model.Dough.THICK_CRUST;
+import static com.dambrz.pizza.maker.model.Topping.PINEAPPLE;
 
 class LargePizzaCalculationStrategy implements CalculationStrategy{
     @Override

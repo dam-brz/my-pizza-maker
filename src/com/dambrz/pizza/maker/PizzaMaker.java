@@ -1,5 +1,11 @@
 package com.dambrz.pizza.maker;
 
+import com.dambrz.pizza.maker.calculation.PizzaPriceCalculator;
+import com.dambrz.pizza.maker.calculation.SwitchCalculationStrategyResolver;
+import com.dambrz.pizza.maker.model.Pizza;
+import com.dambrz.pizza.maker.model.PizzaBuilder;
+import com.dambrz.pizza.maker.model.Topping;
+
 import java.util.Scanner;
 
 public class PizzaMaker {

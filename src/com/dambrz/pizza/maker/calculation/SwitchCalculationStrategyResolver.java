@@ -1,6 +1,8 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.calculation;
 
-class SwitchCalculationStrategyResolver  implements CalculationStrategyResolver {
+import com.dambrz.pizza.maker.model.Size;
+
+public class SwitchCalculationStrategyResolver  implements CalculationStrategyResolver {
 
     @Override
     public CalculationStrategy chooseStrategy(Size size) {

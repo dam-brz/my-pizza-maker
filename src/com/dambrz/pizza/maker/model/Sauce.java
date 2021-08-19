@@ -1,4 +1,4 @@
-package com.dambrz.pizza.maker;
+package com.dambrz.pizza.maker.model;
 
 enum Sauce {
     TOMATO,
